@@ -2,12 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Georgia', serif; /* More romantic font */
+  font-family: 'Georgia', serif;
 }
 
 body {
-  background: radial-gradient(circle, #1a0f0f, #000); /* Darker rose tint */
-  color: #fff;
+  background: radial-gradient(circle, #1a080a, #000); /* Deep romantic dark theme */
+  color: #ffffff; /* High visibility white */
   overflow: hidden;
   position: fixed;
   width: 100%;
@@ -33,60 +33,90 @@ body {
   align-items: center;
   text-align: center;
   opacity: 0;
-  transform: translateY(20px);
-  transition: all 1s ease-in-out;
+  transform: scale(0.9);
+  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
 }
 
 .slide.active {
   opacity: 1;
-  transform: translateY(0);
+  transform: scale(1);
   pointer-events: auto;
 }
 
-.poetic {
-  font-style: italic;
-  font-size: 1.3rem;
-  line-height: 1.8;
-  text-shadow: 0 0 10px rgba(255, 159, 207, 0.3);
+/* TEXT STYLING - High Visibility */
+.title-glow {
+  color: #ff9fcf; /* Rose Pink */
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  text-shadow: 0 0 15px rgba(255, 159, 207, 0.6);
 }
 
-.glow {
-  text-shadow: 0 0 20px #ff5fa2, 0 0 30px #ff5fa2;
+.poetic {
+  color: #ffffff;
+  font-style: italic;
+  font-size: 1.4rem;
+  line-height: 1.8;
+  max-width: 500px;
+}
+
+.glow-main {
+  color: #ff5fa2;
+  font-size: 3rem;
+  text-shadow: 0 0 25px #ff5fa2;
+  margin-bottom: 10px;
+}
+
+.final-sub {
+  color: #ff9fcf;
+  font-size: 1.2rem;
+}
+
+.open-text {
+  color: #ff9fcf;
+  margin-top: 20px;
+  font-size: 1.1rem;
+}
+
+/* PHOTO ANIMATION */
+.img-frame {
+  padding: 10px;
+  border: 1px solid rgba(255, 159, 207, 0.3);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  animation: floatImg 4s ease-in-out infinite;
 }
 
 .slide img {
-  width: 85%;
-  max-width: 320px;
-  border-radius: 100px 100px 0 0; /* Elegant arched look */
-  border: 2px solid #ff9fcf;
-  box-shadow: 0 0 30px rgba(255, 95, 162, 0.4);
+  width: 80vw;
+  max-width: 300px;
+  border-radius: 15px;
+  display: block;
 }
 
+@keyframes floatImg {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* INTERFACE */
 .envelope-wrapper {
   cursor: pointer;
   animation: heartbeat 2s infinite;
 }
 
 .heart-btn {
-  font-size: 120px;
-  filter: drop-shadow(0 0 30px #ff5fa2);
+  font-size: 100px;
+  filter: drop-shadow(0 0 20px #ff5fa2);
 }
 
 @keyframes heartbeat {
   0% { transform: scale(1); }
-  50% { transform: scale(1.15); }
+  50% { transform: scale(1.1); }
   100% { transform: scale(1); }
 }
 
-h2 {
-  color: #ff9fcf;
-  font-size: 2.2rem;
-  margin-bottom: 15px;
-  letter-spacing: 2px;
-}
-
-/* Floating hearts */
+/* FLOATING ELEMENTS */
 .hearts span {
   position: absolute;
   bottom: -50px;
@@ -94,6 +124,7 @@ h2 {
 }
 
 @keyframes floatHearts {
-  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  20% { opacity: 0.7; }
   100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
 }
