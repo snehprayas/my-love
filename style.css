@@ -80,3 +80,30 @@ section {
   0% { transform: translateY(0); opacity: 1; }
   100% { transform: translateY(-120vh); opacity: 0; }
 }
+/* Floating hearts background */
+.hearts span {
+  position: fixed;
+  bottom: -20px;
+  font-size: 18px;
+  opacity: 0.7;
+  animation: floatHearts linear infinite;
+  z-index: 0;
+}
+
+@keyframes floatHearts {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-120vh);
+    opacity: 0;
+  }
+}
+
+/* Make slides stay above hearts */
+.slider {
+  position: relative;
+  z-index: 1;
+}
+
