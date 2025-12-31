@@ -2,43 +2,43 @@ const slides = document.querySelectorAll(".slide");
 const music = document.getElementById("bgMusic");
 let current = 0;
 
+// Force music to play
+function playMusic() {
+  music.play().then(() => {
+    console.log("Music started");
+  }).catch(err => {
+    console.log("Audio waiting for touch");
+  });
+}
+
 function showSlide(index) {
   slides.forEach(slide => slide.classList.remove("active"));
   slides[index].classList.add("active");
 }
 
-// Function to handle moving to the next slide
-function nextSlide() {
-  // Start music on the first interaction
-  if (music.paused) {
-    music.play().catch(e => console.log("Audio waiting for interaction"));
-  }
-  
+document.addEventListener("click", () => {
+  // First click starts music and moves slide
+  playMusic();
   current = (current + 1) % slides.length;
   showSlide(current);
-}
-
-// Click/Tap event
-document.addEventListener("click", nextSlide);
-
-// Keyboard controls
-document.addEventListener("keydown", e => {
-  if (e.key === "ArrowRight") nextSlide();
-  if (e.key === "ArrowLeft") {
-    current = (current - 1 + slides.length) % slides.length;
-    showSlide(current);
-  }
 });
 
-// Floating hearts generator
+// Touch support for mobile
+document.addEventListener("touchstart", () => {
+  if (music.paused) playMusic();
+});
+
+// Floating hearts
 const heartContainer = document.querySelector(".hearts");
+const icons = ["❤️", "💖", "✨", "🌸"];
+
 setInterval(() => {
   const heart = document.createElement("span");
-  heart.innerHTML = "❤️";
+  heart.innerHTML = icons[Math.floor(Math.random() * icons.length)];
   heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = (Math.random() * 3 + 5) + "s";
-  heart.style.fontSize = (Math.random() * 10 + 15) + "px";
+  heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+  heart.style.fontSize = (Math.random() * 15 + 10) + "px";
   heartContainer.appendChild(heart);
 
-  setTimeout(() => heart.remove(), 8000);
-}, 400);
+  setTimeout(() => heart.remove(), 7000);
+}, 300);
