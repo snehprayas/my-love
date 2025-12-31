@@ -6,7 +6,6 @@
 }
 
 body {
-  /* Slightly darker background to make text pop */
   background: radial-gradient(circle, #1a080a, #050505); 
   color: #ffffff;
   overflow: hidden;
@@ -45,20 +44,36 @@ body {
   pointer-events: auto;
 }
 
-/* FIX: Text Container for visibility */
+/* Photo Captions Fix */
+.caption-container {
+  margin-top: 15px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 159, 207, 0.3);
+}
+
+.photo-caption {
+  color: #ffb3d9;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px #000;
+}
+
+/* Visibility Container for Text Slides */
 .text-container {
-  background: rgba(0, 0, 0, 0.4); /* Subtle dark backing */
-  padding: 20px;
-  border-radius: 15px;
-  backdrop-filter: blur(5px); /* Elegant blur effect */
+  background: rgba(0, 0, 0, 0.5);
+  padding: 30px 20px;
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 159, 207, 0.2);
-  width: 90%;
+  width: 85%;
   max-width: 450px;
 }
 
 .title-glow {
-  color: #ffb3d9; /* Brighter Rose Pink */
-  font-size: 2.4rem;
+  color: #ffb3d9;
+  font-size: 2.2rem;
   margin-bottom: 15px;
   font-weight: bold;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
@@ -67,32 +82,25 @@ body {
 .poetic {
   color: #ffffff;
   font-style: italic;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   line-height: 1.6;
-  font-weight: 400;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.9);
 }
 
 .glow-main {
   color: #ff5fa2;
-  font-size: 3.2rem;
+  font-size: 3rem;
   text-shadow: 0 0 20px #ff5fa2, 2px 2px 10px #000;
 }
 
 .final-sub {
   color: #ffb3d9;
-  font-size: 1.3rem;
-  margin-top: 10px;
-}
-
-.caption {
-  margin-top: 20px;
   font-size: 1.2rem;
-  color: #ffb3d9;
-  text-shadow: 1px 1px 5px #000;
+  margin-top: 10px;
+  font-weight: bold;
 }
 
-/* Photo Styling */
+/* Image Frame */
 .img-frame {
   padding: 8px;
   border: 2px solid rgba(255, 159, 207, 0.4);
@@ -114,7 +122,7 @@ body {
   50% { transform: translateY(-15px); }
 }
 
-/* Envelope/Heart */
+/* Heart Button */
 .envelope-wrapper {
   cursor: pointer;
   animation: heartbeat 2s infinite;
