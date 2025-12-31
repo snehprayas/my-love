@@ -4,9 +4,9 @@ let current = 0;
 
 function playMusic() {
   music.play().then(() => {
-    console.log("Playing");
+    console.log("Music Playing");
   }).catch(() => {
-    console.log("Interact to play");
+    console.log("Awaiting User Interaction");
   });
 }
 
@@ -25,7 +25,6 @@ document.addEventListener("touchstart", () => {
   if (music.paused) playMusic();
 });
 
-// Create variety of floating icons
 const heartContainer = document.querySelector(".hearts");
 const icons = ["❤️", "💖", "✨", "🌸", "🤍"];
 
@@ -36,6 +35,5 @@ setInterval(() => {
   heart.style.animationDuration = (Math.random() * 3 + 5) + "s";
   heart.style.fontSize = (Math.random() * 15 + 12) + "px";
   heartContainer.appendChild(heart);
-
   setTimeout(() => heart.remove(), 8000);
-}, 350);
+}, 400);
