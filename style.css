@@ -22,9 +22,9 @@ body {
 }
 
 .slide {
+  position: absolute;
   width: 100%;
   height: 100%;
-  position: absolute;
   padding: 20px;
   display: flex;
   justify-content: center;
@@ -42,16 +42,15 @@ body {
   pointer-events: auto;
 }
 
-/* Images centered */
+/* Images */
 .img-frame {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 10px;
-  margin: auto;
   border-radius: 20px;
-  border: 2px solid rgba(255, 159, 207, 0.4);
+  border: 2px solid rgba(255,159,207,0.4);
   background: rgba(255,255,255,0.08);
 }
 
@@ -62,22 +61,15 @@ body {
   border-radius: 15px;
 }
 
-.caption-container {
-  margin-top: 15px;
-  padding: 10px 14px;
-  background: rgba(0,0,0,0.6);
-  border-radius: 12px;
-}
-
 .photo-caption {
+  margin-top: 15px;
   color: #ffb3d9;
   font-size: 1.2rem;
-  font-weight: bold;
 }
 
-/* Text slides */
+/* Text */
 .text-container {
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.55);
   padding: 30px 20px;
   border-radius: 22px;
   backdrop-filter: blur(8px);
@@ -105,16 +97,49 @@ body {
 .final-sub {
   margin-top: 15px;
   color: #ffb3d9;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .big-question {
   font-size: 1.8rem;
-  margin-top: 25px;
-  text-shadow: 0 0 12px #ff5fa2;
+  margin-top: 15px;
 }
 
-/* Heart intro */
+.small-note {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Buttons */
+.btn-group {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.yes-btn {
+  background: linear-gradient(45deg,#ff5fa2,#ff9fcf);
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 0 15px #ff5fa2;
+}
+
+.no-btn {
+  background: transparent;
+  color: #ffb3d9;
+  border: 1px solid #ffb3d9;
+  padding: 12px 26px;
+  border-radius: 30px;
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+
+/* Intro Heart */
 .envelope-wrapper {
   animation: heartbeat 2s infinite;
 }
@@ -129,28 +154,42 @@ body {
   100% { transform: scale(1); }
 }
 
-/* Floating hearts */
-.hearts span {
-  position: absolute;
-  bottom: -50px;
-  animation: floatHearts linear infinite;
-  z-index: 1;
+/* Animations */
+.fade-up {
+  animation: fadeUp 1.5s ease forwards;
 }
 
-@keyframes floatHearts {
-  0% { transform: translateY(0); opacity: 0; }
-  20% { opacity: 0.8; }
-  100% { transform: translateY(-120vh); opacity: 0; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Confetti */
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: .6; }
+  50% { opacity: 1; }
+  100% { opacity: .6; }
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Hearts & Confetti */
+.hearts span,
 .confetti span {
   position: absolute;
-  top: -20px;
-  animation: confettiFall linear infinite;
-  z-index: 3;
+  animation: floatUp linear infinite;
 }
 
-@keyframes confettiFall {
-  to { transform: translateY(120vh) rotate(360deg); }
+@keyframes floatUp {
+  to { transform: translateY(-120vh); opacity: 0; }
 }
