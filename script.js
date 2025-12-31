@@ -1,18 +1,3 @@
-// Floating hearts background
-const heartContainer = document.querySelector(".hearts");
-
-setInterval(() => {
-  const heart = document.createElement("span");
-  heart.innerHTML = "❤️";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = (Math.random() * 5 + 6) + "s";
-  heartContainer.appendChild(heart);
-
-  setTimeout(() => {
-    heart.remove();
-  }, 12000);
-}, 350);
-
 const slides = document.querySelectorAll(".slide");
 let current = 0;
 
@@ -26,7 +11,6 @@ document.addEventListener("click", () => {
   showSlide(current);
 });
 
-// Arrow keys
 document.addEventListener("keydown", e => {
   if (e.key === "ArrowRight") {
     current = (current + 1) % slides.length;
@@ -38,12 +22,11 @@ document.addEventListener("keydown", e => {
   }
 });
 
-// Swipe (mobile)
+/* Mobile swipe */
 let startX = 0;
 document.addEventListener("touchstart", e => {
   startX = e.touches[0].clientX;
 });
-
 document.addEventListener("touchend", e => {
   let endX = e.changedTouches[0].clientX;
   if (startX - endX > 50) {
@@ -51,3 +34,15 @@ document.addEventListener("touchend", e => {
     showSlide(current);
   }
 });
+
+/* Floating hearts */
+const heartContainer = document.querySelector(".hearts");
+setInterval(() => {
+  const heart = document.createElement("span");
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (Math.random() * 5 + 6) + "s";
+  heartContainer.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 12000);
+}, 350);
