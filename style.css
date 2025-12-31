@@ -29,3 +29,44 @@ body { background: radial-gradient(circle, #1a080a, #050505); color: #fff; overf
 .heart-btn { font-size: 100px; filter: drop-shadow(0 0 20px #ff5fa2); }
 .hearts span, .confetti span { position: absolute; bottom: -50px; animation: floatUp linear infinite; z-index: 1; }
 @keyframes floatUp { to { transform: translateY(-120vh) rotate(360deg); opacity: 0; } }
+/* ... Keep previous styles ... */
+
+.animate-text {
+  animation: textEntrance 1.5s ease-out;
+}
+
+@keyframes textEntrance {
+  from { opacity: 0; transform: translateY(15px); filter: blur(5px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+.highlight {
+  color: #ff9fcf;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(255, 159, 207, 0.5);
+}
+
+.big-question {
+  font-size: 1.8rem;
+  margin: 20px 0;
+  color: #fff;
+}
+
+/* Make emojis pulse slightly */
+.title-glow {
+  display: inline-block;
+  animation: titlePulse 3s ease-in-out infinite;
+}
+
+@keyframes titlePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+/* Smoother Photo Entrance */
+.img-frame {
+  transition: all 1s ease;
+  box-shadow: 0 0 40px rgba(255, 95, 162, 0.2);
+}
+
+/* ... keep rest of previous CSS ... */
