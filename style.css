@@ -6,8 +6,9 @@
 }
 
 body {
-  background: radial-gradient(circle, #1a080a, #000); /* Deep romantic dark theme */
-  color: #ffffff; /* High visibility white */
+  /* Slightly darker background to make text pop */
+  background: radial-gradient(circle, #1a080a, #050505); 
+  color: #ffffff;
   overflow: hidden;
   position: fixed;
   width: 100%;
@@ -26,7 +27,7 @@ body {
   width: 100%;
   height: 100%;
   position: absolute;
-  padding: 40px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -44,52 +45,66 @@ body {
   pointer-events: auto;
 }
 
-/* TEXT STYLING - High Visibility */
+/* FIX: Text Container for visibility */
+.text-container {
+  background: rgba(0, 0, 0, 0.4); /* Subtle dark backing */
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(5px); /* Elegant blur effect */
+  border: 1px solid rgba(255, 159, 207, 0.2);
+  width: 90%;
+  max-width: 450px;
+}
+
 .title-glow {
-  color: #ff9fcf; /* Rose Pink */
-  font-size: 2.2rem;
-  margin-bottom: 20px;
-  text-shadow: 0 0 15px rgba(255, 159, 207, 0.6);
+  color: #ffb3d9; /* Brighter Rose Pink */
+  font-size: 2.4rem;
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
 }
 
 .poetic {
   color: #ffffff;
   font-style: italic;
-  font-size: 1.4rem;
-  line-height: 1.8;
-  max-width: 500px;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  font-weight: 400;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.9);
 }
 
 .glow-main {
   color: #ff5fa2;
-  font-size: 3rem;
-  text-shadow: 0 0 25px #ff5fa2;
-  margin-bottom: 10px;
+  font-size: 3.2rem;
+  text-shadow: 0 0 20px #ff5fa2, 2px 2px 10px #000;
 }
 
 .final-sub {
-  color: #ff9fcf;
-  font-size: 1.2rem;
+  color: #ffb3d9;
+  font-size: 1.3rem;
+  margin-top: 10px;
 }
 
-.open-text {
-  color: #ff9fcf;
+.caption {
   margin-top: 20px;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  color: #ffb3d9;
+  text-shadow: 1px 1px 5px #000;
 }
 
-/* PHOTO ANIMATION */
+/* Photo Styling */
 .img-frame {
-  padding: 10px;
-  border: 1px solid rgba(255, 159, 207, 0.3);
+  padding: 8px;
+  border: 2px solid rgba(255, 159, 207, 0.4);
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 25px rgba(255, 95, 162, 0.3);
   animation: floatImg 4s ease-in-out infinite;
 }
 
 .slide img {
-  width: 80vw;
-  max-width: 300px;
+  width: 75vw;
+  max-width: 280px;
   border-radius: 15px;
   display: block;
 }
@@ -99,15 +114,15 @@ body {
   50% { transform: translateY(-15px); }
 }
 
-/* INTERFACE */
+/* Envelope/Heart */
 .envelope-wrapper {
   cursor: pointer;
   animation: heartbeat 2s infinite;
 }
 
 .heart-btn {
-  font-size: 100px;
-  filter: drop-shadow(0 0 20px #ff5fa2);
+  font-size: 110px;
+  filter: drop-shadow(0 0 25px #ff5fa2);
 }
 
 @keyframes heartbeat {
@@ -116,15 +131,16 @@ body {
   100% { transform: scale(1); }
 }
 
-/* FLOATING ELEMENTS */
+/* Floating Hearts */
 .hearts span {
   position: absolute;
   bottom: -50px;
   animation: floatHearts linear infinite;
+  z-index: 0;
 }
 
 @keyframes floatHearts {
   0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-  20% { opacity: 0.7; }
+  20% { opacity: 0.8; }
   100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
 }
