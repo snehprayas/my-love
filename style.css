@@ -2,14 +2,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Georgia', serif; /* More romantic font */
 }
 
 body {
-  background: radial-gradient(circle, #0f0f1a, #000);
+  background: radial-gradient(circle, #1a0f0f, #000); /* Darker rose tint */
   color: #fff;
-  overflow: hidden; /* Fix: Stops mobile scrolling */
-  position: fixed;  /* Fix: Locks screen on mobile */
+  overflow: hidden;
+  position: fixed;
   width: 100%;
   height: 100%;
 }
@@ -19,82 +19,81 @@ body {
   height: 100vh;
   position: relative;
   z-index: 1;
-  touch-action: none; /* Fix: Stops pull-to-refresh on mobile */
+  touch-action: none;
 }
 
 .slide {
   width: 100%;
   height: 100%;
   position: absolute;
-  padding: 30px;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   opacity: 0;
-  transform: scale(0.9);
-  transition: all 0.8s ease-in-out;
+  transform: translateY(20px);
+  transition: all 1s ease-in-out;
   pointer-events: none;
 }
 
 .slide.active {
   opacity: 1;
-  transform: scale(1);
+  transform: translateY(0);
   pointer-events: auto;
 }
 
-/* Photo Styling */
-.slide img {
-  width: 100%;
-  max-width: 350px;
-  max-height: 60vh;
-  object-fit: cover;
-  border-radius: 15px;
-  box-shadow: 0 0 30px rgba(255, 95, 162, 0.5);
+.poetic {
+  font-style: italic;
+  font-size: 1.3rem;
+  line-height: 1.8;
+  text-shadow: 0 0 10px rgba(255, 159, 207, 0.3);
 }
 
-/* Envelope/Heart Button Animation */
+.glow {
+  text-shadow: 0 0 20px #ff5fa2, 0 0 30px #ff5fa2;
+}
+
+.slide img {
+  width: 85%;
+  max-width: 320px;
+  border-radius: 100px 100px 0 0; /* Elegant arched look */
+  border: 2px solid #ff9fcf;
+  box-shadow: 0 0 30px rgba(255, 95, 162, 0.4);
+}
+
 .envelope-wrapper {
   cursor: pointer;
-  animation: heartbeat 1.5s infinite;
+  animation: heartbeat 2s infinite;
 }
 
 .heart-btn {
-  font-size: 100px;
-  filter: drop-shadow(0 0 20px #ff5fa2);
-}
-
-.open-text {
-  margin-top: 20px;
-  font-size: 1.2rem;
-  color: #ff9fcf;
+  font-size: 120px;
+  filter: drop-shadow(0 0 30px #ff5fa2);
 }
 
 @keyframes heartbeat {
   0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+  50% { transform: scale(1.15); }
   100% { transform: scale(1); }
 }
 
-h1 { font-size: 2.8rem; color: #ff5fa2; margin-bottom: 10px; }
-h2 { font-size: 2rem; color: #ff9fcf; margin-bottom: 20px; }
-p { font-size: 1.1rem; line-height: 1.6; max-width: 600px; }
-
-.caption { margin-top: 15px; opacity: 0.8; font-style: italic; }
+h2 {
+  color: #ff9fcf;
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+}
 
 /* Floating hearts */
-.hearts { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; overflow: hidden; }
 .hearts span {
   position: absolute;
   bottom: -50px;
-  font-size: 20px;
-  opacity: 0.6;
   animation: floatHearts linear infinite;
 }
 
 @keyframes floatHearts {
-  0% { transform: translateY(0) translateX(0); opacity: 1; }
-  50% { transform: translateY(-60vh) translateX(30px); }
-  100% { transform: translateY(-120vh) translateX(-30px); opacity: 0; }
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
 }
