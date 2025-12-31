@@ -1,4 +1,5 @@
 const slides = document.querySelectorAll(".slide");
+const music = document.getElementById("bgMusic");
 let current = 0;
 
 function showSlide(index) {
@@ -6,43 +7,38 @@ function showSlide(index) {
   slides[index].classList.add("active");
 }
 
-document.addEventListener("click", () => {
+// Function to handle moving to the next slide
+function nextSlide() {
+  // Start music on the first interaction
+  if (music.paused) {
+    music.play().catch(e => console.log("Audio waiting for interaction"));
+  }
+  
   current = (current + 1) % slides.length;
   showSlide(current);
-});
+}
 
+// Click/Tap event
+document.addEventListener("click", nextSlide);
+
+// Keyboard controls
 document.addEventListener("keydown", e => {
-  if (e.key === "ArrowRight") {
-    current = (current + 1) % slides.length;
-    showSlide(current);
-  }
+  if (e.key === "ArrowRight") nextSlide();
   if (e.key === "ArrowLeft") {
     current = (current - 1 + slides.length) % slides.length;
     showSlide(current);
   }
 });
 
-/* Mobile swipe */
-let startX = 0;
-document.addEventListener("touchstart", e => {
-  startX = e.touches[0].clientX;
-});
-document.addEventListener("touchend", e => {
-  let endX = e.changedTouches[0].clientX;
-  if (startX - endX > 50) {
-    current = (current + 1) % slides.length;
-    showSlide(current);
-  }
-});
-
-/* Floating hearts */
+// Floating hearts generator
 const heartContainer = document.querySelector(".hearts");
 setInterval(() => {
   const heart = document.createElement("span");
   heart.innerHTML = "❤️";
   heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = (Math.random() * 5 + 6) + "s";
+  heart.style.animationDuration = (Math.random() * 3 + 5) + "s";
+  heart.style.fontSize = (Math.random() * 10 + 15) + "px";
   heartContainer.appendChild(heart);
 
-  setTimeout(() => heart.remove(), 12000);
-}, 350);
+  setTimeout(() => heart.remove(), 8000);
+}, 400);
