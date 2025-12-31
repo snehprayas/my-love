@@ -1,29 +1,53 @@
-// Floating hearts
-const hearts = document.querySelector(".hearts");
+// Floating hearts background
+const heartContainer = document.querySelector(".hearts");
 
 setInterval(() => {
   const heart = document.createElement("span");
   heart.innerHTML = "❤️";
   heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = Math.random() * 5 + 5 + "s";
-  hearts.appendChild(heart);
+  heart.style.animationDuration = (Math.random() * 5 + 6) + "s";
+  heartContainer.appendChild(heart);
 
   setTimeout(() => {
     heart.remove();
-  }, 10000);
-}, 300);
+  }, 12000);
+}, 350);
 
-// Typing effect
-const typing = document.querySelector(".typing");
-const text = typing.innerText;
-typing.innerText = "";
-let i = 0;
+const slides = document.querySelectorAll(".slide");
+let current = 0;
 
-function typeEffect() {
-  if (i < text.length) {
-    typing.innerText += text.charAt(i);
-    i++;
-    setTimeout(typeEffect, 40);
-  }
+function showSlide(index) {
+  slides.forEach(slide => slide.classList.remove("active"));
+  slides[index].classList.add("active");
 }
-typeEffect();
+
+document.addEventListener("click", () => {
+  current = (current + 1) % slides.length;
+  showSlide(current);
+});
+
+// Arrow keys
+document.addEventListener("keydown", e => {
+  if (e.key === "ArrowRight") {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  }
+  if (e.key === "ArrowLeft") {
+    current = (current - 1 + slides.length) % slides.length;
+    showSlide(current);
+  }
+});
+
+// Swipe (mobile)
+let startX = 0;
+document.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+
+document.addEventListener("touchend", e => {
+  let endX = e.changedTouches[0].clientX;
+  if (startX - endX > 50) {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  }
+});
